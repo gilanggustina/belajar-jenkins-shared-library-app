@@ -8,13 +8,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
+                echo 'Start Building...'
+                sh ('./mvnw clean compile test-compile') //jalankan perintah maven
+                echo 'Build Finished!'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
-                sh('error')
+                echo 'Start Testing...'
+                sh ('./mvnw test') //jalankan perintah maven
+                echo 'Testing Finished!'
             }
         }
         stage('Deploy') {
