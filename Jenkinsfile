@@ -170,9 +170,13 @@ pipeline {
                 }
             }
             steps {
-                echo('Start Releasing...')
-                sleep(3)
-                echo('Release Finished!')
+                withCredentials([usernamePassword(
+                    credentialsId: 'gilang_rahasia', 
+                    usernameVariable: 'USER'
+                    passwordVariable: 'PASSWORD', 
+                )]) {
+                  sh('echo "Realease it with -u $USER -p $PASSWORD" > "release.txt"')
+                }
             }
         }
     }
