@@ -11,7 +11,7 @@ pipeline {
 
     options {
         disableConcurrentBuilds() //nonaktifkan build concurrent
-        timeout(time: 2, unit: 'SECONDS') //batasi waktu maksimal 1 jam
+        timeout(time: 2, unit: 'MINUTES') //batasi waktu maksimal 1 jam
         buildDiscarder(logRotator(numToKeepStr: '5')) //simpan build terakhir sebanyak 5
     }
     stages {
