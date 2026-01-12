@@ -29,9 +29,45 @@ pipeline {
     }
 
     stages {
+        stage('OS Setup') { //Matrix
+            matrix {
+                axes {
+                    axis {
+                        name 'OS'
+                        values 'Ubuntu', 'CentOS', 'Windows', 'MacOS'
+                    }
+                    axis {
+                        name 'ARC'
+                        values '32', '64'
+                    }
+                }
+            }
+            stages {
+                stage('Show OS Info') {
+                    steps {
+                        echo("Operating System: ${OS}")
+                        echo("Architecture: ${ARC}-bit")
+                    }
+                }
+            }
+        }
 
-        stage('Preparation') { //Sequential Stages
-            parallel {
+        stage('Preparation') { //Sequential Stages or Parallel Stages
+            // stages { //Sequential Stages
+            //     stage('Prepare Java') {
+            //         steps {
+            //           echo('Preparing Java Environment...')
+            //           sleep(5)
+            //         }
+            //     }
+            //     stage('Prepare Maven') {
+            //         steps {
+            //           echo('Preparing Maven Environment...')
+            //           sleep(5)
+            //         }
+            //     }
+            // }
+            parallel { //Parallel Stages
                 stage('Prepare Java') {
                     steps {
                       echo('Preparing Java Environment...')
