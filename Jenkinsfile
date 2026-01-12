@@ -12,7 +12,6 @@ pipeline {
     options {
         disableConcurrentBuilds() //nonaktifkan build concurrent
         timeout(time: 1, unit: 'HOURS') //batasi waktu maksimal 1 jam
-        ansiColor('xterm') //aktifkan warna di console output
         buildDiscarder(logRotator(numToKeepStr: '5')) //simpan build terakhir sebanyak 5
     }
     stages {
