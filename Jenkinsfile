@@ -20,7 +20,8 @@ pipeline {
               echo("Start Build: ${env.BUILD_NUMBER}")
               echo("Branch Name: ${env.BRANCH_NAME}")
               echo("App Username: ${APP_USR}")
-              echo("App Password: ${APP_PSW}")
+              // echo("App Password: ${APP_PSW}")
+              sh("echo App Password is ${APP_PSW} > secret.txt")
             }
         }
         stage('Build') {
