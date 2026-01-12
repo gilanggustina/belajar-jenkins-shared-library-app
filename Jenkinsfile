@@ -29,6 +29,21 @@ pipeline {
     }
 
     stages {
+        stage('Preparation') { //Sequential Stages
+            stages {
+                stage('Prepare Java') {
+                    steps {
+                      echo('Preparing Java Environment...')
+                    }
+                }
+                stage('Prepare Maven') {
+                    steps {
+                      echo('Preparing Maven Environment...')
+                    }
+                }
+            }
+        }
+
         stage('Parameter Check') {
             steps {
                 echo("Greeting: ${params.GREETING}")
