@@ -92,7 +92,9 @@ pipeline {
                 }
             }
             steps {
-                
+                echo('Start Deploying...')
+                sleep(5)
+                echo("Deployed to ${params.TARGET_ENV} environment.")
             }
         }
     }
