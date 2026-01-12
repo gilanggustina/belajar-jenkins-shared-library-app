@@ -41,6 +41,18 @@ pipeline {
                         values '32', '64'
                     }
                 }
+                excludes {
+                    exclude {
+                        axis {
+                            name 'OS'
+                            value 'Windows'
+                        }
+                        axis {
+                            name 'ARC'
+                            value '32'
+                        }
+                    }
+                }
                 stages {
                     stage('Show OS Info') {
                         steps {
