@@ -4,10 +4,15 @@ pipeline {
           label 'linux && java11' //cari agent dengan label linux dan java11
       }
     }
-
+    environment {
+        AUTHOR = 'Cahaya Gilang Gustina'
+        PROJECT = 'Belajar Jenkins Pipeline'
+    }
     stages {
         stage('Preparation') {
             steps {
+              echo("Author: ${AUTHOR}")
+              echo("Project: ${PROJECT}")
               echo("Start Job: ${env.JOB_NAME}")
               echo("Start Build: ${env.BUILD_NUMBER}")
               echo("Branch Name: ${env.BRANCH_NAME}")
