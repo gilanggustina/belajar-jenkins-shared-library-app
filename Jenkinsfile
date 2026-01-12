@@ -25,6 +25,16 @@ pipeline {
     }
 
     stages {
+        stage('Parameter Check') {
+            steps {
+                echo("Greeting: ${params.GREETING}")
+                echo("Feedback: ${params.FEEDBACK}")
+                echo("Toggle is set to: ${params.TOGGLE}")
+                echo("Selected Color: ${params.COLOR}")
+                sh('echo "Secret is ${SECRET}" > "secret.txt"')
+            }
+        }
+
         stage('Preparation') {
             environment {
               APP = credentials('gilang_rahasia')
