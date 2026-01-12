@@ -9,7 +9,7 @@ pipeline {
         PROJECT = 'Belajar Jenkins Pipeline'
     }
 
-    oprtions {
+    options {
         disableConcurrentBuilds() //nonaktifkan build concurrent
         timeout(time: 1, unit: 'HOURS') //batasi waktu maksimal 1 jam
         ansiColor('xterm') //aktifkan warna di console output
