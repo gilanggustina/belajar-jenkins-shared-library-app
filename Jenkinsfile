@@ -8,7 +8,7 @@ pipeline {
     parameters {
         string(name: 'GREETING', defaultValue: 'Hello', description: 'How should I greet you?')
         text(name: 'FEEDBACK', defaultValue: 'Your feedback here...', description: 'Please provide your feedback')
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'A simple toggle switch')
+        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Should we deploy after build?')
         choice(name: 'COLOR', choices: ['Red', 'Green', 'Blue'], description: 'Pick a color')
         password(name: 'SECRET', defaultValue: 'supersecret', description: 'Enter a secret value')
     }
@@ -95,6 +95,18 @@ pipeline {
                 echo('Start Deploying...')
                 sleep(5)
                 echo("Deployed to ${params.TARGET_ENV} environment.")
+            }
+        }
+        stage('Realese') {
+            when {
+                expression {
+                    return params.DEPLOY
+                }
+            }
+            steps {
+                echo('Start Releasing...')
+                sleep(3)
+                echo('Release Finished!')
             }
         }
     }
