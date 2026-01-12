@@ -9,6 +9,9 @@ pipeline {
         PROJECT = 'Belajar Jenkins Pipeline'
     }
     stages {
+        environment {
+          APP = credentials('gilang_rahasia')
+        }
         stage('Preparation') {
             steps {
               echo("Author: ${AUTHOR}")
@@ -16,6 +19,8 @@ pipeline {
               echo("Start Job: ${env.JOB_NAME}")
               echo("Start Build: ${env.BUILD_NUMBER}")
               echo("Branch Name: ${env.BRANCH_NAME}")
+              echo("App Username: ${APP_USR}")
+              echo("App Password: ${APP_PSW}")
             }
         }
         stage('Build') {
