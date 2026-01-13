@@ -6,6 +6,15 @@ pipeline {
     agent any
 
     stages {
+        stage('Global Variable from Shared Library') {
+            steps {
+                script {
+                    echo("Author Name: ${author.name()}")
+                    echo("Author Channel: ${author.channel()}")
+                }
+            }
+        }
+
         stage('Hello Groovy Class') {
             steps {
                 script {
