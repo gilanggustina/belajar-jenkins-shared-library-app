@@ -62,5 +62,5 @@
 
 // mavenPipeline()
 pznPipeline([
-  type: 'maven'
+  type: 'wrong-type'
 ])
