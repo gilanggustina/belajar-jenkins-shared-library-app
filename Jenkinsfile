@@ -9,7 +9,7 @@ pipeline {
         stage('Hello Groovy Class') {
             steps {
                 script {
-                    Output.hello('Gilang')
+                    Output.hello(this,'Gilang')
                 }
             }
         }
