@@ -60,4 +60,7 @@
 //     }
 // }
 
-mavenPipeline()
+// mavenPipeline()
+pznPipeline([
+  type: 'maven'
+])
