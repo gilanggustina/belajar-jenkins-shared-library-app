@@ -6,6 +6,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Hello Person from Shared Library') {
+            steps {
+                script {
+                    hello.person(firstName: 'Gilang', lastName: 'Gustina')
+                }
+            }
+        }
+
         stage('Maven Command from Shared Library') {
             steps {
                 script {
