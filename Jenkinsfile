@@ -9,6 +9,7 @@ pipeline {
         stage('Global Variable from Shared Library') {
             steps {
                 script {
+                    echo(author())
                     echo("Author Name: ${author.name()}")
                     echo("Author Channel: ${author.channel()}")
                 }
