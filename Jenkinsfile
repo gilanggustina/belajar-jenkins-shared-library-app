@@ -6,6 +6,15 @@ pipeline {
     agent any
 
     stages {
+        stage('Library Resource') {
+          steps {
+              script {
+                  def config = libraryResource('config/build.json')
+                  echo "Library Resource Content: ${config}"
+              }
+          }
+        }
+
         stage('Hello Person from Shared Library') {
             steps {
                 script {
