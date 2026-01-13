@@ -6,6 +6,15 @@ pipeline {
     agent any
 
     stages {
+        stage('Maven Command from Shared Library') {
+            steps {
+                script {
+                    def mvnCommand = maven('clean install')
+                    echo("Maven Command: ${mvnCommand}")
+                }
+            }
+        }
+
         stage('Global Variable from Shared Library') {
             steps {
                 script {
